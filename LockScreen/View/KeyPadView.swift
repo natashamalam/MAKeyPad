@@ -44,18 +44,38 @@ class KeyPadView: UIView {
 
         for _ in 0..<numberOfRows {
             let rowStackView = horizontalStackView()
+            let remainingButtons = buttonTitles.count - index
 
-            // Add 3 buttons per row
-            for _ in 0..<buttonsPerRow {
-                if index < buttonTitles.count {
-                    let button = keyPadButton(with: buttonTitles[index])
-                    rowStackView.addArrangedSubview(button)
-                    index += 1
-                } else {
-                    // Add spacer view if we run out of buttons
-                    let spacer = UIView()
-                    spacer.translatesAutoresizingMaskIntoConstraints = false
-                    rowStackView.addArrangedSubview(spacer)
+            // If only 1 button left, center it by adding spacer first
+            if remainingButtons == 1 {
+                // Add left spacer
+                let leftSpacer = UIView()
+                leftSpacer.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    leftSpacer.widthAnchor.constraint(equalToConstant: 80)
+                ])
+                rowStackView.addArrangedSubview(leftSpacer)
+
+                // Add center button
+                let button = keyPadButton(with: buttonTitles[index])
+                rowStackView.addArrangedSubview(button)
+                index += 1
+
+                // Add right spacer
+                let rightSpacer = UIView()
+                rightSpacer.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    rightSpacer.widthAnchor.constraint(equalToConstant: 80)
+                ])
+                rowStackView.addArrangedSubview(rightSpacer)
+            } else {
+                // Add 3 buttons per row normally
+                for _ in 0..<buttonsPerRow {
+                    if index < buttonTitles.count {
+                        let button = keyPadButton(with: buttonTitles[index])
+                        rowStackView.addArrangedSubview(button)
+                        index += 1
+                    }
                 }
             }
 
