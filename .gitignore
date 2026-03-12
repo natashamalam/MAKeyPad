@@ -64,3 +64,5 @@ fastlane/test_output
 # Claude Code project settings
 .claude/
 .claude_code/
+*.claude
+.anthropic/
