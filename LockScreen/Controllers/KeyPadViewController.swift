@@ -15,7 +15,7 @@ class KeyPadViewController: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
     }
     
     var keyPadView: KeyPadView = {

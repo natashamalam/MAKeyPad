@@ -14,6 +14,7 @@ class KeyPadView: UIView {
         label.text = "Enter Your Passcode"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textAlignment = .center
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
